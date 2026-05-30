@@ -1,13 +1,11 @@
 services:
-  - type: web
+  - type: worker
     name: crypto-rsi-mfi-bot
     runtime: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app --workers 2 --threads 4 --timeout 120
+    startCommand: python app.py
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.4
       - key: TELEGRAM_BOT_TOKEN
-        sync: false
-      - key: WEBHOOK_URL
         sync: false
